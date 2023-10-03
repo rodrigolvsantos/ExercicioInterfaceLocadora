@@ -10,12 +10,16 @@ public class Contract {
 	private LocalDate date;
 	private Double totalValue;
 	
-	/*Como são vários contrtratos vamos criar uma lista de contratos*/
+	/*Como são vários contratos vamos criar uma lista de contratos*/
 	
 	private List<Instatllment> instatllment = new ArrayList<>();
 	
 	public Contract() {
+		private Integer number;
+		private LocalDate date;
+		private Double totalValue;
 		
+		private List<Installment> installments = new ArrayList<>();
 	}
 
 	public Contract(Integer number, LocalDate date, Double totalValue) {

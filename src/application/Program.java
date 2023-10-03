@@ -8,6 +8,7 @@ import java.util.Scanner;
 import entities.Contract;
 import entities.Instatllment;
 import services.ContractServices;
+import services.PaypalService;
 
 public class Program {
 
@@ -15,6 +16,8 @@ public class Program {
 	
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner (System.in);
+		
+		/*Para ler a data precisa dessa funçao*/
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyy");
 		
 		
@@ -23,7 +26,7 @@ public class Program {
 		int number = sc.nextInt();
 		System.out.print("Data (dd/MM/yyyy)");
 		LocalDate date = LocalDate.parse(sc.next(),fmt);
-		System.out.print("Valor do contrato: ");
+		System.out.print("Entre com o número do contrato: ");
 		double totalValue = sc.nextDouble();
 		
 		Contract obj = new Contract(number, date, totalValue); 
@@ -31,7 +34,7 @@ public class Program {
 		System.out.print("Entre com o número de parcelas: ");
 		int n = sc.nextInt();
 		
-		ContractServices contractServices = new ContractServices(null);
+		ContractServices contractServices = new ContractServices(new PaypalService());
 		
 		contractServices.processContract(obj, n);
 		
@@ -40,9 +43,6 @@ public class Program {
 		for (Instatllment instatllment : obj.getInstatllment()) {
 			System.out.println(instatllment);
 		}
-		
-		
-		
 		sc.close();
 
 	}
